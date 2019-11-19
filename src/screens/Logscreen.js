@@ -1,100 +1,87 @@
 import React from 'react';
-import { Text, StyleSheet,Image, View,Alert,TextInput ,Button,TouchableOpacity,KeyboardAvoidingView,StatusBar} from 'react-native';
+import { Text, StyleSheet,Image, View,TextInput ,TouchableOpacity,KeyboardAvoidingView,StatusBar} from 'react-native';
+import firebase from 'firebase'
 
 
-const Logscreen = ({ navigation }) => {
- 
+export default class Logscreen extends React.Component {
 
-    state = {
-        emailText: ' ',
-        passwordText: ' '
-    }
+  
     
+    
+    state = { email: '', password: '',username:'', errorMessage: null }
 
-    const onButtonPress = () => {
-        Alert.alert('Logging in...!');
-        navigation.navigate('profile')
-
-
-    };
-    const onButtonPress2 = () => {
-        Alert.alert('Centers');
-        navigation.navigate('Maps')
-    };
-
-    onSubmitEditing = () => {
-        if (this.input === 'abc' || this.password === '123') {
-        Alert.alert('Logging in...!');
-    }
-    else {
-        Alert.alert('Error!');
-    }
+    handleLogin = () => {
+      const { email, password,username} = this.state
+      firebase
+        .auth()
+        .signInWithEmailAndPassword(email, password)
+        .then(() => this.props.navigation.navigate('main'))
+        .catch(error => this.setState({ errorMessage: error.message }))
     }
 
-    const greeting = 'MYC'
-    return (
+    render() {
+
+        const greeting = 'MYC';
+    
+        return (
        
-        <KeyboardAvoidingView
-            behavior="padding" style={styles.container}
-            keyboardShouldPersistTaps='always'
-             style= {{ flex:1 }}  >
-            <View style={styles.container}>
-            <StatusBar barStyle="light-content" backgroundColor ="black" />
-                <Text style={styles.subHeader}>{greeting}</Text>
+            <KeyboardAvoidingView
+                behavior="padding" style={styles.container}
+                keyboardShouldPersistTaps='always'
+                style={{ flex: 1 }}  >
+                <View style={styles.container}>
+                    <StatusBar barStyle="light-content" backgroundColor="black" />
+                    <Text style={styles.subHeader}>{greeting}</Text>
 
-                <View style={styles.loginContainer}>
-                    <Image resizeMode="contain" style={styles.logo} source={require('./img/dollar.png')}/>
+                    <View style={styles.loginContainer}>
+                        <Image resizeMode="contain" style={styles.logo} source={require('./img/dollar.png')} />
                   
-                </View>
+                    </View>
 
+                    {this.state.errorMessage &&
+                        <Text style={{ color: 'black' }}>
+                            {this.state.errorMessage}
+                        </Text>}
     
-                <TextInput style = {styles.input} 
-                    autoCapitalize="none" 
-                    selectionColor="#fff"
-                    underlineColorAndroid='rgba(0,0,0,0)'
-                    onSubmitEditing={(input)=> this.password.focus()}
-                    autoCorrect={false} 
-                            keyboardType='email-address' 
-                            returnKeyType="next" 
-                            placeholder='Username' 
-                            placeholderTextColor='rgba(225,225,225,0.7)'/>
+                    <TextInput style={styles.input}
+                        autoCapitalize="none"
+                        selectionColor="#fff"
+                        underlineColorAndroid='rgba(0,0,0,0)'
+                        onChangeText={email => this.setState({ email })}
+                        autoCorrect={false}
+                        keyboardType='email-address'
+                        returnKeyType="next"
+                        placeholder='Username'
+                        value={this.state.email || this.state.username}
+                        placeholderTextColor='rgba(225,225,225,0.7)' />
 
-                <TextInput style = {styles.input}   
-                           returnKeyType="go" 
-                    placeholder='Password' 
-                    selectionColor="#fff"
-                    secureTextEntry={true}
-                    underlineColorAndroid='rgba(0,0,0,0)'
-                    ref={(input) => this.password = input}
-                    placeholderTextColor='rgba(225,225,225,0.7)' />
-                
-                <TouchableOpacity style={styles.buttonContainer} onPress={(onButtonPress)}>
-                    <Text  style={styles.buttonText} >LOGIN</Text>
-                </TouchableOpacity>
-                <Text>Don't have an account?</Text>
-                
+                    <TextInput style={styles.input}
+                        returnKeyType="go"
+                        placeholder='Password'
+                        selectionColor="#fff"
+                        secureTextEntry
+                        underlineColorAndroid='rgba(0,0,0,0)'
+                        onChangeText={password => this.setState({ password })}
+                        value={this.state.password}
+                      
+                        placeholderTextColor='rgba(225,225,225,0.7)' />
+                                        <TouchableOpacity style={styles.buttonContainer} >
+                        <Text style={styles.buttonText} onPress={this.handleLogin}>LOGIN</Text>
+                    </TouchableOpacity>
 
-                <TouchableOpacity style={styles.buttonContainer} >
-                    <Text  style={styles.buttonText} >Sign Up</Text>
-                </TouchableOpacity>
-                <TouchableOpacity style={styles.buttonContainer2} onPress={(onButtonPress2)}>
-                    <Text  style={styles.buttonText} >Our Locations</Text>
+                    <TouchableOpacity style={styles.buttonContainer}  onPress={() => this.props.navigation.navigate('signup')}>
+                        <Text style={styles.buttonText} > <Text>Don't have an account? </Text>Sign Up</Text>
+                    </TouchableOpacity>
+
+                    <TouchableOpacity style={styles.buttonContainer2} onPress={() => this.props.navigation.navigate('Maps')}>
+                        <Text style={styles.buttonText} >Our Locations</Text>
                 </TouchableOpacity>   
-
-                <TouchableOpacity style={styles.buttonContainer2} >
-                    <Text  style={styles.buttonText} >Adebayo</Text>
-                </TouchableOpacity>   
-
-                <TouchableOpacity style={styles.buttonContainer2} >
-                    <Text  style={styles.buttonText} >John</Text>
-                </TouchableOpacity>   
-
-                <TouchableOpacity style={styles.buttonContainer2} >
-                    <Text  style={styles.buttonText} >Aqsa</Text>
-                </TouchableOpacity>   
-    </View>
-        </KeyboardAvoidingView>
-    );
+                    
+                </View>
+            </KeyboardAvoidingView>
+        );
+    }
+    
 }
         
 const styles = StyleSheet.create({
@@ -162,5 +149,3 @@ const styles = StyleSheet.create({
     }
  
 })
-
-export default Logscreen;

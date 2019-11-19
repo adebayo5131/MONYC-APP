@@ -8,13 +8,18 @@
     "eject": "expo eject"
   },
   "dependencies": {
+    "@react-native-firebase/app": "^6.0.4",
     "expo": "^33.0.0",
+    "expo-font": "~5.0.1",
+    "firebase": "^7.4.0",
     "google-maps-react": "^2.0.2",
-    "react": "16.8.3",
+    "native-base": "^2.13.8",
+    "navigation": "^5.2.0",
+    "react": "^16.8.3",
     "react-dom": "^16.8.6",
     "react-native": "https://github.com/expo/react-native/archive/sdk-33.0.0.tar.gz",
     "react-native-app-auth": "^3.1.0",
-    "react-native-maps": "0.26.1",
+    "react-native-maps": "^0.26.1",
     "react-native-web": "^0.11.4",
     "react-navigation": "^3.11.0"
   },

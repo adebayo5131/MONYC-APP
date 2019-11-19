@@ -24,7 +24,7 @@ function randomColor() {
     .padStart(6, 0)}`;
 }
 
-class DefaultMarkers extends React.Component {
+class maps extends React.Component {
   constructor(props) {
     super(props);
 
@@ -160,7 +160,7 @@ class DefaultMarkers extends React.Component {
   }
 }
 
-DefaultMarkers.propTypes = {
+maps.propTypes = {
   provider: ProviderPropType,
 };
 
@@ -195,5 +195,4 @@ const styles = StyleSheet.create({
     backgroundColor: 'transparent',
   },
 });
-
-export default DefaultMarkers;
+export default maps;
