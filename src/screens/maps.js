@@ -152,9 +152,11 @@ class maps extends React.Component {
           ))}
         </MapView>
         <View style={styles.buttonContainer}>
-          
-       
+        <TouchableOpacity style={styles.buttonText}  onPress={() => this.props.navigation.navigate('login')}>
+                        <Text style={styles.buttonText} > Back</Text>
+                </TouchableOpacity>    
         </View>
+       
       </View>
     );
   }

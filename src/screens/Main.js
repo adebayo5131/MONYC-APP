@@ -18,7 +18,7 @@ export default class Main extends React.Component {
 
     return (
       <View style={styles.container}>
-        <Text>
+        <Text style={styles.textStyle}>
           Welcome! {currentUser && currentUser.email}!
         </Text>
             
@@ -41,13 +41,9 @@ export default class Main extends React.Component {
 
 const styles = StyleSheet.create({
     textStyle: {
-        color: "#FFF",
-        marginTop: 120,
-        width: 180,
-        textAlign: 'center',
-        opacity: 0.9
-
-        
+        color: "black",
+   
+   
 
     },
      input:{
@@ -68,7 +64,7 @@ const styles = StyleSheet.create({
     
     },
     container: {
-        backgroundColor: '#44bd32',
+        backgroundColor: '#7FDBFF',
         alignItems: 'center',
         flex: 1,
         justifyContent: 'center',
@@ -77,7 +73,7 @@ const styles = StyleSheet.create({
         
     },
     buttonContainer:{
-        backgroundColor: '#44bd32',
+        backgroundColor: '#7FDBFF',
         color: 'white',
         paddingVertical: 10,
         borderRadius: 25,
@@ -91,7 +87,7 @@ const styles = StyleSheet.create({
    
     },
     buttonText:{
-        color: '#fff',
+        color: 'blue',
         textAlign: 'center',
         fontWeight: '700',
         fontSize: 16,

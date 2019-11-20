@@ -7,7 +7,8 @@ import {
     StyleSheet,
     View,
     Button,
-    TouchableOpacity
+    TouchableOpacity,
+    KeyboardAvoidingView
 } from 'react-native'
 import Svg, {
     Ellipse
@@ -70,11 +71,13 @@ class ProfileScreen extends React.Component {
     render() {
 
         return (
+            <KeyboardAvoidingView
+            behavior="padding" style={styles.container}
+                keyboardShouldPersistTaps='always'
+                style={{ flex: 1 }} 
+            >
             <View style={styles.container}>
-                <TouchableOpacity>
-                <Text onPress={this.handleSignOut}>Logout</Text>
-                </TouchableOpacity>
-                            
+                
                  
     <TouchableOpacity style ={styles.button3} onPress={(onButtonPress)}><Text >Recycle Centers</Text></TouchableOpacity>
             <View style={styles.ellipseStack}>
@@ -100,8 +103,16 @@ class ProfileScreen extends React.Component {
                 <View style={styles.loremIpsum4Row}>
                     <Text style={styles.loremIpsum4}>Bottles{"\n"}{this.state.bottleCount}</Text>
                     <TouchableOpacity style={styles.button2} ><Text style={styles.monyc}>Transfer</Text></TouchableOpacity>
+                   
+             
         </View>
- </View>
+      
+                            <TouchableOpacity style={styles.button0} >
+                                    <Text style={styles.monyc} onPress={this.handleSignOut}>Logout</Text>
+                                    </TouchableOpacity>        
+                </View>
+          
+                </KeyboardAvoidingView>
 
         )
     }
@@ -111,7 +122,7 @@ class ProfileScreen extends React.Component {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        backgroundColor: '#44bd32',
+        backgroundColor: '#7FDBFF',
 
     },
     monyc: {
@@ -181,15 +192,15 @@ const styles = StyleSheet.create({
     button: {
         width: 80,
         height: 35,
-        backgroundColor: 'green',
+        backgroundColor: '#7bed9f',
         borderRadius: 7,
-        color: 'white',
+        color: 'black',
         borderWidth: 0,
         shadowOffset: {
             width: 5,
             height: 5
         },
-        shadowColor: "rgba(0,0,0,1)",
+     
         shadowOpacity: 0.28,
         marginTop: 18,
         alignSelf: "center"
@@ -197,7 +208,7 @@ const styles = StyleSheet.create({
     loremIpsum4: {
         width: 80,
         height: 84,
-        color: "#121212",
+        color: "#192a56",
         fontSize: 25,
         //fontFamily: "impact-regular",
         //   lineHeight: 35,
@@ -218,7 +229,20 @@ const styles = StyleSheet.create({
         height: 50,
 
         marginLeft: 147,
-        marginTop: 5
+      
+    },
+    button0: {
+        color: 'red',
+        textAlign: 'center',
+        fontWeight: '700',
+        fontSize: 30,
+        textsize: 40,
+        borderRadius: 30,
+        width: 150,
+        marginTop: 50,
+
+        marginLeft: 130,
+  
     },
     loremIpsum4Row: {
         height: 84,
@@ -228,14 +252,7 @@ const styles = StyleSheet.create({
         marginRight: 28
     },
     button3: {
-        // width: 101,
-        // height: 47,
-        // backgroundColor: "rgba(175,93,16,0)",
-        // borderRadius: 16,
-        // borderColor: "rgba(203,97,12,0)",
-        // borderWidth: 5,
-        // marginLeft: 300,
-        // marginBottom: -525
+
         textAlign: 'center',
         justifyContent: 'center',
         alignItems: "center",
@@ -248,9 +265,9 @@ const styles = StyleSheet.create({
         fontSize: 16,
         width: 150,
         height: 35,
-        backgroundColor: 'green',
+        backgroundColor: '#7bed9f',
         borderRadius: 7,
-        color: 'white',
+        color: 'red',
         borderWidth: 0,
         shadowOffset: {
             width: 5,

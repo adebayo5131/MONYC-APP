@@ -1,13 +1,10 @@
 import React from 'react';
-import { Text, StyleSheet,Image, View,TextInput ,TouchableOpacity,KeyboardAvoidingView,StatusBar} from 'react-native';
+import { Text, StyleSheet,Image, ActivityIndicator,View,TextInput ,TouchableOpacity,KeyboardAvoidingView,StatusBar} from 'react-native';
 import firebase from 'firebase'
 
 
 export default class Logscreen extends React.Component {
-
-  
-    
-    
+   
     state = { email: '', password: '',username:'', errorMessage: null }
 
     handleLogin = () => {
@@ -21,7 +18,7 @@ export default class Logscreen extends React.Component {
 
     render() {
 
-        const greeting = 'MYC';
+        const greeting = 'MoNYC';
     
         return (
        
@@ -39,32 +36,32 @@ export default class Logscreen extends React.Component {
                     </View>
 
                     {this.state.errorMessage &&
-                        <Text style={{ color: 'black' }}>
+                        <Text style={{ color: 'red' }}>
                             {this.state.errorMessage}
                         </Text>}
     
                     <TextInput style={styles.input}
                         autoCapitalize="none"
-                        selectionColor="#fff"
-                        underlineColorAndroid='rgba(0,0,0,0)'
+                        selectionColor="blue"
+                        underlineColorAndroid={'transparent'}
                         onChangeText={email => this.setState({ email })}
                         autoCorrect={false}
                         keyboardType='email-address'
                         returnKeyType="next"
                         placeholder='Username'
                         value={this.state.email || this.state.username}
-                        placeholderTextColor='rgba(225,225,225,0.7)' />
+                        placeholderTextColor='#7f8fa6' />
 
                     <TextInput style={styles.input}
                         returnKeyType="go"
                         placeholder='Password'
-                        selectionColor="#fff"
+                        selectionColor="blue"
                         secureTextEntry
-                        underlineColorAndroid='rgba(0,0,0,0)'
+                        underlineColorAndroid={'transparent'}
                         onChangeText={password => this.setState({ password })}
                         value={this.state.password}
                       
-                        placeholderTextColor='rgba(225,225,225,0.7)' />
+                        placeholderTextColor='#7f8fa6' />
                                         <TouchableOpacity style={styles.buttonContainer} >
                         <Text style={styles.buttonText} onPress={this.handleLogin}>LOGIN</Text>
                     </TouchableOpacity>
@@ -85,23 +82,24 @@ export default class Logscreen extends React.Component {
 }
         
 const styles = StyleSheet.create({
-    textStyle: {
-        color: "#FFF",
-        marginTop: 120,
-        width: 180,
-        textAlign: 'center',
-        opacity: 0.9
+    textInput: {
+      height: 40,
+        width: '90%',
+        borderColor: 'blue',
+        borderWidth: 1,
+        marginTop: 8
+       
+      },
 
-        
-
-    },
      input:{
         width:300,
          borderRadius: 25,
-        marginBottom: 15,
+         marginBottom: 15,
+         borderColor: 'blue',
         padding: 10,
-         color: 'white',
-         backgroundColor: 'green',
+        color: 'black',
+         backgroundColor: 'white',
+         borderColor: 'blue',
          
     },
     subHeader: {
@@ -113,24 +111,24 @@ const styles = StyleSheet.create({
     
     },
     container: {
-        backgroundColor: '#44bd32',
+        backgroundColor: '#7FDBFF',
         alignItems: 'center',
         flex: 1,
         justifyContent: 'center',
-      
-        fontFamily: 'Verdana',
+        fontFamily: 'Verdana'
         
     },
     buttonContainer:{
-        backgroundColor: '#44bd32',
+        backgroundColor: '#7FDBFF',
         color: 'white',
         paddingVertical: 10,
         borderRadius: 25,
         marginVertical: 10,
-        paddingVertical: 13
+        paddingVertical: 13,
+        borderColor: 'blue',
     },
     buttonContainer2:{
-        backgroundColor: '#44bd32',
+        backgroundColor: '#7FDBFF',
         color: 'white',
         borderRadius: 25,
    
@@ -140,6 +138,7 @@ const styles = StyleSheet.create({
         textAlign: 'center',
         fontWeight: '700',
         fontSize: 16,
+        borderColor: 'blue',
 
     },
     logo: {

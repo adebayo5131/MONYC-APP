@@ -1,4 +1,4 @@
-import { createStackNavigator, createAppContainer, } from 'react-navigation';
+import { createStackNavigator, createAppContainer, createSwitchNavigator} from 'react-navigation';
 
 
 import Logscreen from './src/screens/Logscreen';
@@ -10,7 +10,8 @@ import SignUp from './src/screens/SignUp'
 import Main from './src/screens/Main'
 
 
-const navigator = createStackNavigator(
+
+const navigator = createSwitchNavigator(
   {
     load: Loading,
     login: Logscreen,
@@ -18,14 +19,13 @@ const navigator = createStackNavigator(
     Maps: maps,
     profile: ProfileScreen,
     signup: SignUp,
-    main: Main
-
+    main: Main,
   },
   {
-    initialRouteName: 'signup',
+    initialRouteName: 'load',
     defaultNavigationOptions: {
-      title: ' Welcome To MONYC '
     }
   }
 );
+
 export default createAppContainer(navigator);

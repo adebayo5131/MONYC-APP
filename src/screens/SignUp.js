@@ -10,44 +10,59 @@ import firebase from 'firebase'
         .auth()
         .createUserWithEmailAndPassword(email, password)
         .then(user => this.props.navigation.navigate('login'))
-        .catch(error => this.setState({ errorMessage: "Enter a valide email and password"}))
+        .catch(error => this.setState({ errorMessage: error.message}))
     }
-  
+
   render() {
+    const greeting = 'MONYC';
     return (
+      <KeyboardAvoidingView
+      behavior="padding" style={styles.container}
+      keyboardShouldPersistTaps='always'
+      style={{ flex: 1 }} >
       <View style={styles.container}>
+            <Text style={styles.subHeader}>{greeting}</Text>
+        
+                <View style={styles.loginContainer}>
+                          <Image resizeMode="contain" style={styles.logo} source={require('./img/dollar.png')} />
+                    
+                  </View>
 
-              <View style={styles.loginContainer}>
-                        <Image resizeMode="contain" style={styles.logo} source={require('./img/dollar.png')} />
-                  
-                </View>
+                {this.state.errorMessage &&
+                  <Text style={{ color: 'b' }}>
+                    {this.state.errorMessage}
+                  </Text>}
+              <TextInput
+                placeholder="Email"
+                autoCapitalize="none"
+            style={styles.input}
+            selectionColor="blue"
+                underlineColorAndroid='#7f8fa6'
+                onChangeText={email => this.setState({ email })}
+                value={this.state.email}
+              />
+            <TextInput
+              secureTextEntry
+              placeholder="Password"
+            autoCapitalize="none"
+            selectionColor="blue"
+              style={styles.input}
+              underlineColorAndroid='#7f8fa6'
+              onChangeText={password => this.setState({ password })}
+              value={this.state.password}
+            />
 
-        {this.state.errorMessage &&
-          <Text style={{ color: 'b' }}>
-            {this.state.errorMessage}
-          </Text>}
-        <TextInput
-          placeholder="Email"
-          autoCapitalize="none"
-          style={styles.input}
-          onChangeText={email => this.setState({ email })}
-          value={this.state.email}
-        />
-        <TextInput
-          secureTextEntry
-          placeholder="Password"
-          autoCapitalize="none"
-          style={styles.input}
-          onChangeText={password => this.setState({ password })}
-          value={this.state.password}
-        />
+                  <TouchableOpacity style={styles.buttonText}  onPress={this.handleSignUp} >
+                                          <Text style={styles.buttonText} >Sign Up</Text>
+                                  </TouchableOpacity>
 
-        <Button style={styles.buttonText} title="Sign Up" onPress={this.handleSignUp} />
-        <Button style={styles.buttonText} 
-          title = "Already have an account? Login"
-          onPress={() => this.props.navigation.navigate('login')}
-        />
-      </View>
+                    <TouchableOpacity style={styles.buttonText}  onPress={() => this.props.navigation.navigate('login')}>
+                        <Text style={styles.buttonText} > Already have an account? Login</Text>
+                </TouchableOpacity>               
+      
+        </View>
+        </KeyboardAvoidingView >
+ 
     )
   }
 }
@@ -56,7 +71,7 @@ const styles = StyleSheet.create({
     textInput: {
         height: 40,
         width: '90%',
-        borderColor: 'gray',
+        borderColor: 'blue',
         borderWidth: 1,
         marginTop: 8
       },
@@ -66,7 +81,8 @@ const styles = StyleSheet.create({
          borderRadius: 25,
         marginBottom: 15,
         padding: 10,
-         color: 'black',
+       color: 'black',
+       borderColor: 'blue',
          backgroundColor: 'white',
          
     },
@@ -75,16 +91,18 @@ const styles = StyleSheet.create({
         fontSize: 20,
         marginVertical: 10,
         paddingHorizontal:16,
-        fontWeight: 'bold'
+      fontWeight: 'bold',
+      borderColor: 'blue',
     
     },
     container: {
-        backgroundColor: '#44bd32',
+        backgroundColor: '#7FDBFF',
         alignItems: 'center',
         flex: 1,
         justifyContent: 'center',
-        color:'white',
-        fontFamily: 'Verdana',
+        color:'black',
+      fontFamily: 'Verdana',
+      borderColor: 'blue',
         
     },
     buttonContainer:{
@@ -93,7 +111,8 @@ const styles = StyleSheet.create({
         paddingVertical: 10,
         borderRadius: 25,
         marginVertical: 10,
-        paddingVertical: 13
+      paddingVertical: 13
+        
     },
     buttonContainer2:{
         backgroundColor: '#44bd32',
@@ -105,7 +124,8 @@ const styles = StyleSheet.create({
         color: 'white',
         textAlign: 'center',
         fontWeight: '700',
-        fontSize: 16,
+      fontSize: 16,
+        marginTop:10
 
     },
     logo: {
