@@ -75,7 +75,6 @@ const styles = StyleSheet.create({
         borderWidth: 1,
         marginTop: 8
       },
-    
      input:{
         width:300,
          borderRadius: 25,
