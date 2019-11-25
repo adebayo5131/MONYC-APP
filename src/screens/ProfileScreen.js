@@ -236,7 +236,6 @@ const styles = StyleSheet.create({
         textAlign: 'center',
         fontWeight: '700',
         fontSize: 30,
-        textsize: 40,
         borderRadius: 30,
         width: 150,
         marginTop: 50,
