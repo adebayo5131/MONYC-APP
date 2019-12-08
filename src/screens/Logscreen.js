@@ -1,5 +1,5 @@
 import React from 'react';
-import { Text, StyleSheet,Image, ActivityIndicator,View,TextInput ,TouchableOpacity,KeyboardAvoidingView,StatusBar} from 'react-native';
+import { Text, StyleSheet,Image,View,TextInput ,TouchableOpacity,KeyboardAvoidingView,StatusBar} from 'react-native';
 import firebase from 'firebase'
 
 
@@ -114,8 +114,7 @@ const styles = StyleSheet.create({
         backgroundColor: '#7FDBFF',
         alignItems: 'center',
         flex: 1,
-        justifyContent: 'center',
-        fontFamily: 'Verdana'
+        justifyContent: 'center'
         
     },
     buttonContainer:{

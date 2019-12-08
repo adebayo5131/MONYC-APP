@@ -5,7 +5,6 @@ import {
     Image,
     View,
     TouchableOpacity,
-    BackHandler
 } from 'react-native'
 import firebase from 'firebase'
 

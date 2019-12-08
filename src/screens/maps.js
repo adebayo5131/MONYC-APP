@@ -114,7 +114,6 @@ class maps extends React.Component {
             latitudeDelta: 0.1600,
             longitudeDelta: 0.04511,
           }}
-
         >
 
            

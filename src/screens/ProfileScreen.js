@@ -19,18 +19,16 @@ import firebase from 'firebase'
 class ProfileScreen extends React.Component {
     constructor({
         navigation
-    }) {
+             }) {
         super()
         onButtonPress = () => {
 
             navigation.navigate('Maps')
-
-
         };
         this.state = {
             counter: 0,
             bottleCount: 0,
-            codes: ["JOHN8", "ADEBAYO4", "ANTHONY1", "AQYA6", "ZAHRA3", "FAJER9"],
+            codes: ["JOHN8", "ADEBAYO001", "ANTHONY1", "AQYA6", "ZAHRA3", "FAJER9", "ANDY002", "MAHDI003"],
             text: ""
         }
         this.handleChange = this.handleChange.bind(this)
@@ -65,6 +63,22 @@ class ProfileScreen extends React.Component {
     handleSignOut = () => {
         firebase.auth().signOut().then(() => this.props.navigation.navigate('signup'))
         
+    }
+
+    TransferAlertHandler=()=>{
+       
+        Alert.alert(
+          //title
+          'You are about to transfer',
+          //body
+          'I am two option alert. Do you want to cancel me ?',
+          [
+            {text: 'Yes', onPress: () => console.log('Yes Pressed')},
+            {text: 'No', onPress: () => console.log('No Pressed'), style: 'cancel'},
+          ],
+          { cancelable: false }
+          //clicking out side of alert will not cancel
+        );
       }
 
 
@@ -90,6 +104,7 @@ class ProfileScreen extends React.Component {
                     cy={160}
                     rx={153}
                     ry={159}
+                    title = '$'
                 />
                 </Svg>
                 <Text style={styles.loremIpsum}>{this.state.counter}</Text>
